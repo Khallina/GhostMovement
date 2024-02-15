@@ -15,8 +15,4 @@ public class DummySpider {
         return posY;
     }
 
-    public void move(int newX, int newY) {
-        this.posX = newX;
-        this.posY = newY;
-    }
 }
