@@ -1,10 +1,18 @@
 import java.awt.*;
+import java.util.List;
+import java.util.Observable;
 
-public class Ghost implements Drawable {
+public class Ghost extends Observable implements Drawable {
     private int positionX;
     private int positionY;
 
+    public Ghost(int positionX, int positionY) {
+        this.positionX = positionX;
+        this.positionY = positionY;
+    }
+
     public void draw(Graphics g) {
+        /*
         if (Math.random()>0.5)
             if (Math.random()>0.5)
                 positionX += 20;
@@ -15,6 +23,10 @@ public class Ghost implements Drawable {
                 positionY += 20;
             else
                 positionY -= 20;
+
+         */
+       // positionX = 25;
+      //  positionY = 25;
 
         if(positionX > 400) positionX = 400;
         if(positionY > 400) positionY = 400;
@@ -55,6 +67,18 @@ public class Ghost implements Drawable {
 
     public void setPositionY(int positionY) {
         this.positionY = positionY;
+    }
+
+    public void move() {
+        //movement algorithm
+        positionX++; positionY++;
+        if (positionX>500) positionX = 0;
+        if (positionY>500) positionY = 0;
+        }
+
+     public void run() {
+        move();
+        notify();
     }
 
 }

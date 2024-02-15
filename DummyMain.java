@@ -5,6 +5,7 @@ public class DummyMain {
         DummyWorld dummyWorld = new DummyWorld(100, 50);
         DummySpider dummySpider = new DummySpider(50,30);
         Frame frame = new Frame("Dummy World Display");
+        Ghost ghost = new Ghost(25, 25);
 
         Canvas canvas = new Canvas() {
             @Override
