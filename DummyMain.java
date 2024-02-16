@@ -1,30 +1,34 @@
+import javax.swing.*;
 import java.awt.*;
 
 public class DummyMain {
     public static void main(String[] args) {
         DummyWorld dummyWorld = new DummyWorld(100, 50);
-        DummySpider dummySpider = new DummySpider(50,30);
         Frame frame = new Frame("Dummy World Display");
-        Ghost ghost = new Ghost(25, 25);
-
-        Canvas canvas = new Canvas() {
-            @Override
-            public void paint(Graphics g) {
-                super.paint(g);
-                int x = dummySpider.getPosX();
-                int y = dummySpider.getPosY();
-                g.setColor(Color.BLACK);
-
-                g.fillRect(x,y,5,5);
-
-               // g.drawString("Length: " + dummyWorld.getLength(), 50, 100);
-               // g.drawString("Width: " + dummyWorld.getWidth(), 50, 120);
-            }
-        };
-
-        frame.add(canvas);
-
         frame.setSize(300, 200);
+        Ghost ghost = new Ghost(40, 25);
+        DummySpider dummySpider = new DummySpider(50, 30);
+
         frame.setVisible(true);
+    }
+
+    class dummyWorld extends JPanel {
+        private Ghost ghost;
+        private DummySpider spider;
+
+        public dummyWorld(Ghost ghost) {
+            this.ghost = ghost;
+        }
+
+        public dummyWorld(DummySpider spider) {
+            this.spider = spider;
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            ghost.draw(g);
+            spider.draw(g);
+        }
     }
 }
