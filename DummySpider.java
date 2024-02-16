@@ -1,19 +1,19 @@
 import java.awt.*;
 
 public class DummySpider {
-    private int posX;
-    private int posY;
+    private static int posX;
+    private static int posY;
 
     public DummySpider(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
     }
 
-    public int getPosX() {
+    public static int getPosX() {
         return posX;
     }
 
-    public int getPosY() {
+    public static int getPosY() {
         return posY;
     }
 

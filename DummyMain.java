@@ -11,7 +11,20 @@ public class DummyMain {
             public void paint(Graphics g) {
                 super.paint(g);
                 dummySpider.draw(g);
-                ghost.draw(g);
+                //ghost.draw(g);
+
+                Thread ghostThread = new Thread(() -> {
+                    synchronized (ghost){
+                        ghost.move(g);
+                    }
+                });
+                ghostThread.start();
+
+                try {
+                    ghostThread.join();
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
             }
         };
 
@@ -19,5 +32,6 @@ public class DummyMain {
 
         frame.setSize(dummyWorld.getLength(), dummyWorld.getWidth());
         frame.setVisible(true);
+
     }
 }
