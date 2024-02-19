@@ -6,6 +6,7 @@ public class DummyMain {
         DummySpider dummySpider = new DummySpider(100,100);
         Frame frame = new Frame("Dummy World Display");
         Ghost ghost = new Ghost(40, 25);
+        MoveGhost mg = new MoveGhost(40,25);
         Canvas canvas = new Canvas() {
             @Override
             public void paint(Graphics g) {
@@ -14,8 +15,8 @@ public class DummyMain {
                 //ghost.draw(g);
 
                 Thread ghostThread = new Thread(() -> {
-                    synchronized (ghost){
-                        ghost.move(g);
+                    synchronized (mg){
+                        mg.move(g);
                     }
                 });
                 ghostThread.start();
