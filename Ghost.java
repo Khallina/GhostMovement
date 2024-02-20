@@ -84,15 +84,15 @@ public class Ghost extends Observable implements Drawable {
             g.fillRect(positionX, positionY, 30, 30);
 
             // Move ghost towards spider
-            if (ghostPosition.x < spiderPosition.x) {
+            if (ghostPosition.getX() < spiderPosition.getX()) {
                 positionX++;
-            } else if (ghostPosition.x > spiderPosition.x) {
+            } else if (ghostPosition.getX() > spiderPosition.getX()) {
                 positionX--;
             }
 
-            if (ghostPosition.y < spiderPosition.y) {
+            if (ghostPosition.getY() < spiderPosition.getY()) {
                 positionY++;
-            } else if (ghostPosition.y > spiderPosition.y) {
+            } else if (ghostPosition.getY() > spiderPosition.getY()) {
                 positionY--;
             }
 
